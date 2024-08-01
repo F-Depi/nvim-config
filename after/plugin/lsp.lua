@@ -15,7 +15,7 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
--- to learn how to use mason.nvim with lsp-zero
+-- to learn how to use mason.nvim with lsp-zero 
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -26,11 +26,25 @@ require('mason-lspconfig').setup({
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
-  }
+  },
 })
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+require'lspconfig'.ltex.setup{
+    cmd = { "ltex-ls" },
+    filetypes = { "tex", "bib", "markdown" },
+    settings = {
+        ltex = {
+            language = "it-IT",
+            diagnosticSeverity = "information",
+            additionalRules = {
+                motherTongue = "en",
+            },
+        },
+    },
+}
 
 -- this is the function that loads the extra snippets to luasnip
 -- from rafamadriz/friendly-snippets

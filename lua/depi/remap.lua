@@ -18,6 +18,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+-- Run the last :! command
+vim.keymap.set("n", "<F8>", ":w<ENTER>:make<ENTER>")
+
 -- I should be able to move around in folder but it doesn't work
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
@@ -32,18 +35,16 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Autoclose parenthesis and others + move the cursor to the right if the closing parenthesis is already there
-vim.keymap.set('i', '{', '{}<Left>', { noremap = true })
-vim.keymap.set('i', '[', '[]<Left>', { noremap = true })
-vim.keymap.set('i', '(', '()<Left>', { noremap = true })
-vim.keymap.set('i', '<', '<><Left>', { noremap = true })
+--vim.keymap.set('i', '{', '{}<Left>', { noremap = true })
+--vim.keymap.set('i', '[', '[]<Left>', { noremap = true })
+--vim.keymap.set('i', '(', '()<Left>', { noremap = true })
 
-vim.api.nvim_set_keymap('i', '}', [[getline('.')[col('.')-1] == '}' ? "\<Right>" : "}" ]], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', ']', [[getline('.')[col('.')-1] == ']' ? "\<Right>" : "]" ]], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', ')', [[getline('.')[col('.')-1] == ')' ? "\<Right>" : ")" ]], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '>', [[getline('.')[col('.')-1] == ">" ? "\<Right>" : ">" ]], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '"', [[getline('.')[col('.')-1] == '"' ? "\<Right>" : "\"\"<Left>" ]], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '\'', [[getline('.')[col('.')-1] == "'" ? "\<Right>" : "''<Left>" ]], { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '.', [[getline('.')[col('.')-1] == "." ? "\<Right>" : "." ]], { expr = true, noremap = true, silent = true })
+--vim.api.nvim_set_keymap('i', '}', [[getline('.')[col('.')-1] == '}' ? "\<Right>" : "}" ]], { expr = true, noremap = true, silent = true })
+--vim.api.nvim_set_keymap('i', ']', [[getline('.')[col('.')-1] == ']' ? "\<Right>" : "]" ]], { expr = true, noremap = true, silent = true })
+--vim.api.nvim_set_keymap('i', ')', [[getline('.')[col('.')-1] == ')' ? "\<Right>" : ")" ]], { expr = true, noremap = true, silent = true })
+--vim.api.nvim_set_keymap('i', '"', [[getline('.')[col('.')-1] == '"' ? "\<Right>" : "\"\"<Left>" ]], { expr = true, noremap = true, silent = true })
+--vim.api.nvim_set_keymap('i', '.', [[getline('.')[col('.')-1] == "." ? "\<Right>" : "." ]], { expr = true, noremap = true, silent = true })
 
 -- Auto enter + indent with {}
 vim.api.nvim_set_keymap('i', '<CR>', [[search('{\%#}', 'n') ? "\<CR>\<CR>\<Up>\<C-f>" : "\<CR>"]], { expr = true, noremap = true, silent = true })
+
