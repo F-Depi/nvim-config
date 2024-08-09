@@ -26,6 +26,9 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+vim.opt.colorcolumn = "80"
+vim.opt.numberwidth = 3
+
 --[[
 -- Define a function to determine fold levels
 local function foldexpr(lnum)

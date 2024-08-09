@@ -25,6 +25,7 @@ require('mason-lspconfig').setup({
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
+      require('luasnip.loaders.from_vscode').lazy_load()
     end,
   },
 })
@@ -32,12 +33,12 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
-require'lspconfig'.ltex.setup{
+require('lspconfig').ltex.setup{
     cmd = { "ltex-ls" },
     filetypes = { "tex", "bib", "markdown" },
     settings = {
         ltex = {
-            language = "it-IT",
+            language = {"it-IT", "en-EN"},
             diagnosticSeverity = "information",
             additionalRules = {
                 motherTongue = "en",
@@ -65,4 +66,15 @@ cmp.setup({
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
   }),
+})
+
+
+-- Specific setup for LaTeX files (optional, only if more customization needed)
+cmp.setup.filetype('tex', {
+  sources = {
+    {name = 'luasnip'},
+    {name = 'nvim_lsp'},
+    {name = 'buffer'},
+    {name = 'path'},
+  },
 })
