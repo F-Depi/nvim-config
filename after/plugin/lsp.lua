@@ -33,19 +33,21 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
+local custom_dict = {}
+for word in io.lines(vim.fn.stdpath("config") .. "/spell/en.utf-8.add") do
+    table.insert(custom_dict, word)
+end
+
 require('lspconfig').ltex.setup{
-    cmd = { "ltex-ls" },
-    filetypes = { "tex", "bib", "markdown" },
     settings = {
         ltex = {
-            language = {"it-IT", "en-EN"},
-            diagnosticSeverity = "information",
-            additionalRules = {
-                motherTongue = "en",
+            dictionary = {
+                ["en-US"] = custom_dict,  -- Use "en-GB" or other language codes if needed
             },
         },
     },
 }
+
 
 -- this is the function that loads the extra snippets to luasnip
 -- from rafamadriz/friendly-snippets

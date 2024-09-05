@@ -69,6 +69,7 @@ return require('packer').startup(function(use)
     },
     ft = {
         'csv',
+        'Bcsv',
         'tsv',
         'csv_semicolon',
         'csv_whitespace',
@@ -77,7 +78,7 @@ return require('packer').startup(function(use)
         'rfc_semicolon'
     }
 }
-    --use('github/copilot.vim')
+    use('github/copilot.vim')
     -- install without yarn or npm
     use({
         "iamcco/markdown-preview.nvim",

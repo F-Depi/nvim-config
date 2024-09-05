@@ -53,4 +53,4 @@ vim.api.nvim_set_option('foldexpr', 'v:lua.foldexpr(v:lnum)')
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = true
+vim.opt.foldenable = false

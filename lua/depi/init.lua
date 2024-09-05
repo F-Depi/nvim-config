@@ -2,6 +2,8 @@ require("depi.set")
 require("depi.remap")
 require("depi.packer")
 
+vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+
 -- Function to check the first line for '::' and run the command
 local function check_first_line_and_run_command()
   -- Get the first line of the buffer
