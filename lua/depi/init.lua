@@ -2,6 +2,7 @@ require("depi.set")
 require("depi.remap")
 require("depi.packer")
 
+-- Set the spellfile to the custom dictionary
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
 -- Function to check the first line for '::' and run the command

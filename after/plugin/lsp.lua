@@ -41,6 +41,8 @@ end
 require('lspconfig').ltex.setup{
     settings = {
         ltex = {
+            language = "auto",
+            checkLanguage = { "en-US", "it" },
             dictionary = {
                 ["en-US"] = custom_dict,  -- Use "en-GB" or other language codes if needed
             },
