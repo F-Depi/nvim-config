@@ -46,6 +46,9 @@ require('lspconfig').ltex.setup{
             dictionary = {
                 ["en-US"] = custom_dict,  -- Use "en-GB" or other language codes if needed
             },
+            filetypes = {
+                "latex", "tex", "text", "bib",
+            },
         },
     },
 }
