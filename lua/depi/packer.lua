@@ -26,10 +26,10 @@ return require('packer').startup(function(use)
     -- Nice colors, more then default
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
-    -- Some advance way of see of the file really is
+    -- Some advance way to see how the file really is
     use('nvim-treesitter/playground')
 
-    -- Save link of a bunch of files in a box for easy access
+    -- Save link of a bunch of files in a box for quick access
     use('theprimeagen/harpoon')
 
     -- See history of changes in a file, week back
@@ -58,27 +58,27 @@ return require('packer').startup(function(use)
     }
 
     use {
-    'cameron-wags/rainbow_csv.nvim',
-    config = function()
-        require 'rainbow_csv'.setup()
-    end,
-    -- optional lazy-loading below
-    module = {
-        'rainbow_csv',
-        'rainbow_csv.fns'
-    },
-    ft = {
-        'csv',
-        'Bcsv',
-        'tsv',
-        'csv_semicolon',
-        'csv_whitespace',
-        'csv_pipe',
-        'rfc_csv',
-        'rfc_semicolon'
+        'cameron-wags/rainbow_csv.nvim',
+        config = function()
+            require 'rainbow_csv'.setup()
+        end,
+        -- optional lazy-loading below
+        module = {
+            'rainbow_csv',
+            'rainbow_csv.fns'
+        },
+        ft = {
+            'csv',
+            'Bcsv',
+            'tsv',
+            'csv_semicolon',
+            'csv_whitespace',
+            'csv_pipe',
+            'rfc_csv',
+            'rfc_semicolon'
+        }
     }
-}
-    use('github/copilot.vim')
+
     -- install without yarn or npm
     use({
         "iamcco/markdown-preview.nvim",

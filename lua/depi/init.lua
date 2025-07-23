@@ -30,3 +30,4 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
   pattern = "*",
   callback = check_first_line_and_run_command
 })
+

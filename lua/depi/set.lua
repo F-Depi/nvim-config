@@ -26,7 +26,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "120"
+vim.opt.colorcolumn = "80"
 vim.opt.numberwidth = 3
 
 --[[
@@ -53,4 +53,13 @@ vim.api.nvim_set_option('foldexpr', 'v:lua.foldexpr(v:lnum)')
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+vim.opt.foldenable = true
+vim.opt.foldlevelstart = 99      -- don't auto-fold on open
+
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+})
+
