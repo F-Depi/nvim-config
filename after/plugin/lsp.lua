@@ -18,40 +18,47 @@ end)
 -- to learn how to use mason.nvim with lsp-zero 
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require('mason').setup({})
+
 require('mason-lspconfig').setup({
-  ensure_installed = {'clangd', 'pyright'},
+  ensure_installed = { 'clangd', 'pyright', 'lua_ls' },
   handlers = {
     lsp_zero.default_setup,
+
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
-      require('luasnip.loaders.from_vscode').lazy_load()
+      vim.lsp.config.lua_ls = lua_opts
+      vim.lsp.enable("lua_ls")
     end,
   },
 })
+
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 local custom_dict = {}
-for word in io.lines(vim.fn.stdpath("config") .. "/spell/en.utf-8.add") do
+local spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+
+if vim.fn.filereadable(spellfile) == 1 then
+  for word in io.lines(spellfile) do
     table.insert(custom_dict, word)
+  end
 end
 
-require('lspconfig').ltex.setup{
+vim.lsp.config.ltex = {
     settings = {
         ltex = {
             language = "auto",
             checkLanguage = { "en-US", "it" },
             dictionary = {
-                ["en-US"] = custom_dict,  -- Use "en-GB" or other language codes if needed
-            },
-            filetypes = {
-                "latex", "tex", "text", "bib",
+                ["en-US"] = custom_dict, -- make sure this variable exists
             },
         },
     },
+    filetypes = { "latex", "tex", "text", "bib" },
 }
+
+vim.lsp.enable("ltex")
 
 
 -- this is the function that loads the extra snippets to luasnip
@@ -60,10 +67,10 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
   sources = {
-    {name = 'path'},
-    {name = 'nvim_lsp'},
-    {name = 'nvim_lua'},
     {name = 'luasnip', keyword_length = 2},
+    {name = 'nvim_lsp'},
+    {name = 'path'},
+    {name = 'nvim_lua'},
     {name = 'buffer', keyword_length = 3},
   },
   formatting = lsp_zero.cmp_format({details = false}),
