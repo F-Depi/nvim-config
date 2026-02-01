@@ -60,6 +60,21 @@ vim.lsp.config.ltex = {
 
 vim.lsp.enable("ltex")
 
+vim.lsp.config.ltex_plus = {
+    settings = {
+        ltex_plus = {
+            language = "auto",
+            checkLanguage = { "en-US", "it" },
+            dictionary = {
+                ["en-US"] = custom_dict, -- make sure this variable exists
+            },
+        },
+    },
+    filetypes = { "latex", "tex", "text", "bib" },
+}
+
+vim.lsp.enable("ltex_plus")
+
 
 -- this is the function that loads the extra snippets to luasnip
 -- from rafamadriz/friendly-snippets
