@@ -8,26 +8,15 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        -- or                            , branch = '0.1.x',
+        'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
     use { "catppuccin/nvim", as = "catppuccin" }
 
---    use({
---        'rose-pine/neovim',
---        as = 'rose-pine',
---        config = function()
---            vim.cmd('colorscheme rose-pine')
---        end
---    })
 
     -- Nice colors, more then default
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-
-    -- Some advance way to see how the file really is
-    use('nvim-treesitter/playground')
+    use('nvim-treesitter/nvim-treesitter', {branch = 'main', run = ':TSUpdate'})
 
     -- Save link of a bunch of files in a box for quick access
     use('theprimeagen/harpoon')

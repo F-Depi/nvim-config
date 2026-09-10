@@ -45,32 +45,33 @@ if vim.fn.filereadable(spellfile) == 1 then
   end
 end
 
-vim.lsp.config.ltex = {
-    settings = {
-        ltex = {
-            language = "auto",
-            checkLanguage = { "en-US", "it" },
-            dictionary = {
-                ["en-US"] = custom_dict, -- make sure this variable exists
-            },
-        },
-    },
-    filetypes = { "latex", "tex", "text", "bib" },
-}
 
-vim.lsp.enable("ltex")
-
+--vim.lsp.config.ltex_plus = {
+--    settings = {
+--        ltex = {
+--            language = "auto",
+--            enabled = { "latex", "tex", "bibtex", "restructuredtext", "plaintext" },
+--            dictionary = {
+--                ["en-US"] = custom_dict,
+--                ["it"] = custom_dict,
+--            },
+--        },
+--    },
+--    filetypes = { "tex", "text", "bib" },
+--}
+--
+--vim.lsp.enable("ltex_plus")
 vim.lsp.config.ltex_plus = {
     settings = {
-        ltex_plus = {
-            language = "auto",
-            checkLanguage = { "en-US", "it" },
+        ltex = {
+            language = "en-US",
+            enabled = { "latex", "tex" },
             dictionary = {
-                ["en-US"] = custom_dict, -- make sure this variable exists
+                ["en-US"] = custom_dict,
             },
         },
     },
-    filetypes = { "latex", "tex", "text", "bib" },
+    filetypes = { "tex", "plaintex", "bib" },
 }
 
 vim.lsp.enable("ltex_plus")
