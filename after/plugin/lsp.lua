@@ -20,7 +20,7 @@ end)
 require('mason').setup({})
 
 require('mason-lspconfig').setup({
-  ensure_installed = { 'clangd', 'pyright', 'lua_ls' },
+  ensure_installed = { 'clangd', 'basedpyright', 'lua_ls', 'ruff', 'texlab' },
   handlers = {
     lsp_zero.default_setup,
 

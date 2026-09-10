@@ -23,7 +23,6 @@ vim.keymap.set("n", "<F8>", ":w<ENTER>:make<ENTER>")
 
 -- I should be able to move around in folder but it doesn't work
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
