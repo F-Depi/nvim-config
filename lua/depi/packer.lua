@@ -36,8 +36,8 @@ return require('packer').startup(function(use)
 
             {'folke/tokyonight.nvim'},
             {'VonHeikemen/lsp-zero.nvim'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+            {'mason-org/mason.nvim'},
+            {'mason-org/mason-lspconfig.nvim'},
             {'neovim/nvim-lspconfig'},
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-nvim-lsp'},
